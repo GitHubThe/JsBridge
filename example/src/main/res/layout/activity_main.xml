@@ -2,21 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <!-- button 演示Java调用web -->
-    <Button 
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:text="@string/button_name"
-        android:layout_height="48dp"
-        />
-    
+
+
     <!-- webview 演示web调用Java -->
     <com.github.lzyzsd.jsbridge.BridgeWebView
         android:id="@+id/webView"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-     </com.github.lzyzsd.jsbridge.BridgeWebView>
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Call hanlder"
+            android:textAllCaps="false"
+            android:textColor="#1369fe" />
+        <TextView
+            android:id="@+id/reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Reload webview"
+            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
+            android:textColor="#1369fe" />
+
+        <TextView
+            android:id="@+id/disable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Disable safety timeout"
+            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
+            android:textColor="#1369fe" />
+    </LinearLayout>
 
 </LinearLayout>
