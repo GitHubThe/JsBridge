@@ -1,8 +1,17 @@
-1) 使用com.github.lzyzsd.jsbridge.BridgeWebView替代WebView
+1) 使用com.github.lzyzsd.jsbridge.BridgeWebView替代WebView, 例如XML中:
+
+```
+<com.github.lzyzsd.jsbridge.BridgeWebView
+    android:id="@+id/webView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+```
 
 2) 在Java中注册handler, 调用JS的handler
 
 ```
+webView = (BridgeWebView) findViewById(R.id.webView);
+
 webView.registerHandler("testObjcCallback", new BridgeHandler() {
    @Override
    public void handler(String data, CallBackFunction function) {
