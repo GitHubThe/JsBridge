@@ -1,10 +1,10 @@
 ### 前言
 
-    本库是从"大头鬼"的JsBridge库fork后改造而来, 目的是与iOS/OSX平台, 大名鼎鼎的WebViewJavascriptBridge库保持一致的通信方案。
+本库是从"大头鬼"的JsBridge库fork后改造而来, 目的是与iOS/OSX平台, 大名鼎鼎的WebViewJavascriptBridge库保持一致的通信方案。
 
-    附:
-    "大头鬼"的JsBridge库地址: https://github.com/lzyzsd/JsBridge (微信也采用了类似解决方案)
-    WebViewJavascriptBridge库地址: https://github.com/marcuswestin/WebViewJavascriptBridge (Facebook等大公司都在使用)
+附:
+- "大头鬼"的JsBridge库地址: [JsBridge](https://github.com/lzyzsd/JsBridge) (微信也采用了类似解决方案)
+- WebViewJavascriptBridge库地址: [WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge) (Facebook等大公司都在使用)
 
 ### 使用步骤
 
@@ -72,7 +72,9 @@ setupWebViewJavascriptBridge(function(bridge) {
 })
 ```
 
-### 关于JsBridge和WebViewJavascriptBridge的使用, 博客介绍:
+### 关于JsBridge和WebViewJavascriptBridge的对比使用, 参考这篇博客:
+
+[聊一聊 webview 与 JS 交互方案 - 适用 Android & iOS](http://www.jianshu.com/p/c565c8f93abd)
 
 ## License
 
