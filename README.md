@@ -2,56 +2,56 @@
 
 2) 在Java中注册handler, 调用JS的handler
 
-   ```
-   webView.registerHandler("testObjcCallback", new BridgeHandler() {
-       @Override
-       public void handler(String data, CallBackFunction function) {
-           Log.i(TAG, "testObjcCallback called: " + data);
-           function.onCallBack("Response from testObjcCallback");
-       }
-   });
+```
+webView.registerHandler("testObjcCallback", new BridgeHandler() {
+   @Override
+   public void handler(String data, CallBackFunction function) {
+       Log.i(TAG, "testObjcCallback called: " + data);
+       function.onCallBack("Response from testObjcCallback");
+   }
+});
 
-   webView.callHandler("testJavascriptHandler", "{\"greetingFromObjC\": \"Hi there, JS!\"}", new CallBackFunction() {
-       @Override
-       public void onCallBack(String data) {
-           Log.i(TAG, "testJavascriptHandler responded: " + data);
-       }
-   });
-   ```
+webView.callHandler("testJavascriptHandler", "{\"greetingFromObjC\": \"Hi there, JS!\"}", new CallBackFunction() {
+   @Override
+   public void onCallBack(String data) {
+       Log.i(TAG, "testJavascriptHandler responded: " + data);
+   }
+});
+```
 
 3) 拷贝 setupWebViewJavascriptBridge 这段方法到JS中:
 
-    ```
-    function setupWebViewJavascriptBridge(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-        window.WVJBCallbacks = [callback];
-        var WVJBIframe = document.createElement('iframe');
-        WVJBIframe.style.display = 'none';
-        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-        document.documentElement.appendChild(WVJBIframe);
-        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
-    }
-    ```
+```
+function setupWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+    window.WVJBCallbacks = [callback];
+    var WVJBIframe = document.createElement('iframe');
+    WVJBIframe.style.display = 'none';
+    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+    document.documentElement.appendChild(WVJBIframe);
+    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+}
+```
 
 4) 最后, JS中执行 setupWebViewJavascriptBridge 方法, 并用bridge去注册handler和调用Java的handler
 
-    ```
-    setupWebViewJavascriptBridge(function(bridge) {
+```
+setupWebViewJavascriptBridge(function(bridge) {
 
-        /* Initialize your app here */
+    /* Initialize your app here */
 
-        bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
-            console.log('ObjC called testJavascriptHandler with', data)
-            var responseData = { 'Javascript Says':'Right back atcha!' }
-            console.log('JS responding with', responseData)
-            responseCallback(responseData)
-        })
-        bridge.callHandler('testObjcCallback', {'foo': 'bar'}, function(response) {
-            console.log('JS got response', response)
-        })
+    bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
+        console.log('ObjC called testJavascriptHandler with', data)
+        var responseData = { 'Javascript Says':'Right back atcha!' }
+        console.log('JS responding with', responseData)
+        responseCallback(responseData)
     })
-    ```
+    bridge.callHandler('testObjcCallback', {'foo': 'bar'}, function(response) {
+        console.log('JS got response', response)
+    })
+})
+```
 
 ## License
 
