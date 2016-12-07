@@ -1,3 +1,13 @@
+### 前言
+
+    本库是从"大头鬼"的JsBridge库fork后改造而来, 目的是与iOS/OSX平台, 大名鼎鼎的WebViewJavascriptBridge库保持一致的通信方案。
+
+    附:
+    "大头鬼"的JsBridge库地址: https://github.com/lzyzsd/JsBridge (微信也采用了类似解决方案)
+    WebViewJavascriptBridge库地址: https://github.com/marcuswestin/WebViewJavascriptBridge (Facebook等大公司都在使用)
+
+### 使用步骤
+
 1) 使用com.github.lzyzsd.jsbridge.BridgeWebView替代WebView, 例如XML中:
 
 ```
@@ -61,6 +71,8 @@ setupWebViewJavascriptBridge(function(bridge) {
     })
 })
 ```
+
+### 关于JsBridge和WebViewJavascriptBridge的使用, 博客介绍:
 
 ## License
 
